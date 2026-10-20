@@ -1,0 +1,31 @@
+# Identificación de Riesgos y Problemas de Calidad en los Datos
+
+**Subequipo responsable:** Equipo de Calidad (`Benny M.S.`, `Romina C.G.`)  
+**Fecha de auditoría:** 19 de octubre de 2026  
+
+---
+
+## 1. Matriz de los 10 Problemas de Calidad Identificados
+
+| ID | Categoría del Problema | Descripción y Evidencia Exacta en `Dataset.csv` / `Contexto` | Severidad | Regla de Validación / Remediación Programática |
+| :-: | :--- | :--- | :---: | :--- |
+| **RQ-01** | **Incompatibilidad de constructo entre escalas** | `equipoJP` (`CONS-SERV-01`, filas 14–19) utilizó una *Matriz de riesgo probabilidad × impacto* en lugar de una escala de madurez de *compliance*. La conversión a niveles 1 y 2 tiene `confianza_homologacion = baja` (33.3% del dataset). | **Alta** | Separar en los análisis estadísticos los registros con `confianza_homologacion == 'baja'` o aplicar ponderación diferenciada aprobada por Derecho. |
+| **RQ-02** | **Fuga de cuasi-identificadores en metadatos (`observaciones_calidad_dato`)** | En las filas 14–19 (`CONS-SERV-01`), aunque se generalizaron las columnas 5, 6 y 7, el texto de `observaciones_calidad_dato` revela literalmente: *"antigüedad original (11 años)"*, *"tamaño original (4 personas)"* y municipio *"Villagrán"*. Combinado con el giro (*ingeniería civil*), permite re-identificar a la empresa. | **Crítica (Legal)** | Implementar sanitizador de expresiones regulares en `src/homologacion.py` que reemplace cifras y municipios exactos dentro de `observaciones_calidad_dato` por etiquetas `[DATO_GENERALIZADO]`. |
+| **RQ-03** | **Falta de generalización a bandas en `COS-BJ-01`** | En las filas 2–7 (`equiporisan`), `antiguedad_rango` contiene `"6 años"` y `tamano_empresa` contiene `"14 empleados"` (valores exactos y no rangos). Además, 14 empleados corresponde a *Pequeña empresa*, no a microempresa ($\le 10$ empleados). | **Alta** | Mapear `"6 años" -> "5 a 10 años"` y `"14 empleados" -> "Pequeña (11-50 empleados)"` en la capa `data/processed/`. |
+| **RQ-04** | **Captura global duplicada sin granularidad por dimensión** | En las filas 8–13 (`equipoN`, `PYME-001`), las columnas `riesgo_identificado`, `evidencia_disponible` y `accion_recomendada` contienen exactamente el mismo texto copiado en las 6 categorías ISO 37301. | **Alta** | Agregar columna booleana derivada `es_reporte_global` (`True` cuando las 6 filas comparten texto idéntico) para excluirlas de análisis textuales por categoría. |
+| **RQ-05** | **Contradicción lógica en fuente primaria (Semáforo vs. Nivel)** | `equipoN` reportó en su entrega original un nivel de madurez `1 de 4` (*Inexistente*), pero asignó **semáforo verde** (bajo riesgo). Fue reclasificado operativamente a semáforo rojo en la consolidación. | **Media** | Validar automáticamente la consistencia monotónica: `Nivel 1 -> Rojo (Alto)`, `Nivel 2 -> Naranja/Amarillo`, `Nivel 3 -> Amarillo/Verde`, `Nivel 4 -> Verde`. |
+| **RQ-06** | **Incoherencia jurídico-sustantiva según `forma_juridica`** | En la fila 14 (`CONS-SERV-01`), la empresa es **Persona física con actividad empresarial**, pero `accion_recomendada` exige *"establecer un consejo de administración de al menos tres integrantes"*, figura exclusiva de personas morales (sociedades mercantiles). | **Media** | Regla de validación cruzada: si `forma_juridica` contiene `"Persona física"`, marcar alerta cuando `accion_recomendada` mencione *"consejo de administración"*, *"estatuto social"* o *"asamblea de socios"*. |
+| **RQ-07** | **Categorías no evaluadas en entrevista rellenadas como riesgo base** | En `equiporisan` (`COS-BJ-01`, filas 3, 4 y 6), tres dimensiones no generaron hallazgo independiente en entrevista y se rellenaron con niveles `1` y `2` por defecto y sin `accion_recomendada`. | **Media** | Agregar bandera `hallazgo_entrevista_directo` (`True`/`False`) para distinguir hallazgos empíricos de valores imputados por defecto. |
+| **RQ-08** | **Heterogeneidad en cláusulas ISO 37301 y nulos textuales** | `clausula_iso37301` mezcla `"5.3 Roles, responsabilidades y autoridades"`, `"5.3"`, `"8.3 y 8.4"` y `"No reportada en el archivo fuente"`. `region_municipio` usa `"No especificada en la fuente"`. | **Media** | Normalizar `clausula_iso37301` a catálogo canónico por categoría ISO 37301 y convertir cadenas de texto faltante a `NA` / `SIN_DATO`. |
+| **RQ-09** | **Codificación `UTF-8 con BOM` y transcripción manual desde imagen** | `Dataset.csv` inicia con el byte `\ufeff` (UTF-8 BOM), provocando que lectores estándar llamen `\ufeffequipo` a la primera columna. Además, la matriz de `equipoJP` fue entregada como imagen en Word y transcrita a mano. | **Media** | Leer siempre con `encoding="utf-8-sig"` y exportar en `UTF-8` puro sin BOM; prohibir entregas en imagen en la plantilla de Derecho. |
+| **RQ-10** | **Confusión de fuente pública del SAT (`Art. 69-B Bis` vs. `Art. 69-B`)** | Los archivos `SAT listado del Art. 69-B del CFF.htm` y `.md` en `Contexto` descargan la página del **Art. 69-B Bis** (*transmisión indebida de pérdidas fiscales*, con solo 2 oficios PDF), no el padrón del **Art. 69-B** (*operaciones simuladas / EFOS*). | **Crítica (Metodológica)** | Apuntar el módulo ETL (`src/sat_69b_etl.py`) exclusivamente al listado completo de Datos Abiertos del **Art. 69-B del CFF** (EFOS: *presuntos, definitivos, desvirtuados y sentencia favorable*). |
+
+---
+
+## 2. Criterios de Aceptación para el Pipeline de Calidad (`src/validation.py`)
+
+Todo lote de datos que ingrese a `data/raw/` debe superar automáticamente las siguientes pruebas (`pytest`) antes de pasar a `data/processed/`:
+1. **Integridad estructural:** Exactamente 19 columnas esperadas (tras remover BOM) y múltiplo exacto de 6 filas ($N = 6k$, donde $k$ es el número de PYMES).
+2. **Completitud de bloques ISO 37301:** Cada `id_pyme` debe contener exactamente las 6 categorías fijas de `categoria_riesgo_iso37301`.
+3. **Dominio de escala homologada:** `nivel_homologado_borrador` $\in \{1, 2, 3, 4\}$ y correspondencia exacta con `etiqueta_homologada_borrador`.
+4. **Cero fuga de PII / Cuasi-IDs:** Ninguna celda en `data/processed/` puede contener patrones de RFC ni conservar en `observaciones_calidad_dato` municipios o conteos exactos de empleados previamente generalizados.
