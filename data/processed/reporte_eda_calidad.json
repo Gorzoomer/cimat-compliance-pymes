@@ -1,0 +1,192 @@
+{
+  "resumen_general": {
+    "total_registros": 18,
+    "total_pymes": 3,
+    "codificacion_salida": "UTF-8 sin BOM",
+    "distribucion_nivel_homologado": {
+      "1": 15,
+      "2": 3
+    },
+    "distribucion_confianza_homologacion": {
+      "alta": 12,
+      "baja": 6
+    },
+    "promedio_madurez_por_categoria_iso37301": {
+      "Gobierno corporativo y contrapesos": 1.33,
+      "Función de cumplimiento": 1.0,
+      "Políticas y procedimientos documentados": 1.33,
+      "Canal de denuncias e investigación interna": 1.0,
+      "Gestión de riesgos y control interno": 1.0,
+      "Gobernanza de datos e inteligencia artificial": 1.33
+    }
+  },
+  "auditoria_calidad_entrada": {
+    "archivo": "Dataset.csv",
+    "total_registros": 18,
+    "total_columnas": 19,
+    "total_pymes": 3,
+    "pymes_identificadas": [
+      "COS-BJ-01",
+      "PYME-001",
+      "CONS-SERV-01"
+    ],
+    "tiene_utf8_bom": true,
+    "columnas_faltantes": [],
+    "columnas_extra": [],
+    "total_hallazgos_calidad": 21,
+    "codigos_detectados": [
+      "RQ-01",
+      "RQ-02",
+      "RQ-03",
+      "RQ-04",
+      "RQ-06",
+      "RQ-09"
+    ],
+    "hallazgos": [
+      {
+        "codigo": "RQ-09",
+        "severidad": "media",
+        "detalle": "El archivo inicia con marca UTF-8 BOM (\\ufeff) en el encabezado 'equipo'."
+      },
+      {
+        "codigo": "RQ-04",
+        "severidad": "alta",
+        "id_pyme": "PYME-001",
+        "detalle": "PYME-001 presenta el mismo texto de riesgo repetido en las 6 categorías ISO 37301."
+      },
+      {
+        "codigo": "RQ-03",
+        "severidad": "alta",
+        "fila": "2",
+        "id_pyme": "COS-BJ-01",
+        "detalle": "Valores puntuales sin agrupar en banda: '6 años', '14 empleados'."
+      },
+      {
+        "codigo": "RQ-03",
+        "severidad": "alta",
+        "fila": "3",
+        "id_pyme": "COS-BJ-01",
+        "detalle": "Valores puntuales sin agrupar en banda: '6 años', '14 empleados'."
+      },
+      {
+        "codigo": "RQ-03",
+        "severidad": "alta",
+        "fila": "4",
+        "id_pyme": "COS-BJ-01",
+        "detalle": "Valores puntuales sin agrupar en banda: '6 años', '14 empleados'."
+      },
+      {
+        "codigo": "RQ-03",
+        "severidad": "alta",
+        "fila": "5",
+        "id_pyme": "COS-BJ-01",
+        "detalle": "Valores puntuales sin agrupar en banda: '6 años', '14 empleados'."
+      },
+      {
+        "codigo": "RQ-03",
+        "severidad": "alta",
+        "fila": "6",
+        "id_pyme": "COS-BJ-01",
+        "detalle": "Valores puntuales sin agrupar en banda: '6 años', '14 empleados'."
+      },
+      {
+        "codigo": "RQ-03",
+        "severidad": "alta",
+        "fila": "7",
+        "id_pyme": "COS-BJ-01",
+        "detalle": "Valores puntuales sin agrupar en banda: '6 años', '14 empleados'."
+      },
+      {
+        "codigo": "RQ-01",
+        "severidad": "alta",
+        "fila": "14",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Instrumento original es Matriz Probabilidad x Impacto, no escala de madurez."
+      },
+      {
+        "codigo": "RQ-02",
+        "severidad": "critica",
+        "fila": "14",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Fuga de cuasi-identificadores (municipio Villagrán / años / personas exactas) en observaciones."
+      },
+      {
+        "codigo": "RQ-06",
+        "severidad": "media",
+        "fila": "14",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Se recomienda crear un consejo de administración a una Persona física."
+      },
+      {
+        "codigo": "RQ-01",
+        "severidad": "alta",
+        "fila": "15",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Instrumento original es Matriz Probabilidad x Impacto, no escala de madurez."
+      },
+      {
+        "codigo": "RQ-02",
+        "severidad": "critica",
+        "fila": "15",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Fuga de cuasi-identificadores (municipio Villagrán / años / personas exactas) en observaciones."
+      },
+      {
+        "codigo": "RQ-01",
+        "severidad": "alta",
+        "fila": "16",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Instrumento original es Matriz Probabilidad x Impacto, no escala de madurez."
+      },
+      {
+        "codigo": "RQ-02",
+        "severidad": "critica",
+        "fila": "16",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Fuga de cuasi-identificadores (municipio Villagrán / años / personas exactas) en observaciones."
+      },
+      {
+        "codigo": "RQ-01",
+        "severidad": "alta",
+        "fila": "17",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Instrumento original es Matriz Probabilidad x Impacto, no escala de madurez."
+      },
+      {
+        "codigo": "RQ-02",
+        "severidad": "critica",
+        "fila": "17",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Fuga de cuasi-identificadores (municipio Villagrán / años / personas exactas) en observaciones."
+      },
+      {
+        "codigo": "RQ-01",
+        "severidad": "alta",
+        "fila": "18",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Instrumento original es Matriz Probabilidad x Impacto, no escala de madurez."
+      },
+      {
+        "codigo": "RQ-02",
+        "severidad": "critica",
+        "fila": "18",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Fuga de cuasi-identificadores (municipio Villagrán / años / personas exactas) en observaciones."
+      },
+      {
+        "codigo": "RQ-01",
+        "severidad": "alta",
+        "fila": "19",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Instrumento original es Matriz Probabilidad x Impacto, no escala de madurez."
+      },
+      {
+        "codigo": "RQ-02",
+        "severidad": "critica",
+        "fila": "19",
+        "id_pyme": "CONS-SERV-01",
+        "detalle": "Fuga de cuasi-identificadores (municipio Villagrán / años / personas exactas) en observaciones."
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+id_empresa,estatus_69b,fecha_publicacion_dof,municipio_fiscal,id_representante_legal,id_socio_accionista,id_domicilio_fiscal,id_notaria_constitucion,etiqueta_pu,clase_pu,peso_evidencia
+EFOS-GTO-001,Definitivo,2024-07-05,"León, Gto.",REP-101,SOC-201,DOM-301,NOT-401,1,Positivo_Confirmado,1.0
+EFOS-GTO-002,Definitivo,2024-07-05,"León, Gto.",REP-101,SOC-202,DOM-301,NOT-401,1,Positivo_Confirmado,1.0
+EFOS-GTO-003,Presunto,2025-05-30,"Celaya, Gto.",REP-102,SOC-201,DOM-301,NOT-402,1,Positivo_Presunto,0.6
+EFOS-GTO-004,Presunto,2025-05-30,"Irapuato, Gto.",REP-102,SOC-203,DOM-302,NOT-401,1,Positivo_Presunto,0.6
+EMP-GTO-005,Desvirtuado,2026-06-05,"Salamanca, Gto.",REP-103,SOC-203,DOM-303,NOT-403,0,Aclarado_Desvirtuado,0.2
+EMP-GTO-006,No_Listado,NA,"Guanajuato, Gto.",REP-104,SOC-204,DOM-304,NOT-404,-1,Unlabeled_No_Identificado,0.0

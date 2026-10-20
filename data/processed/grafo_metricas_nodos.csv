@@ -1,0 +1,7 @@
+id_empresa,estatus_69b,clase_pu,grado_empresas_conectadas,centralidad_grado,centralidad_intermediacion,coeficiente_agrupamiento
+EFOS-GTO-001,Definitivo,Positivo_Confirmado,3,0.6,0.0,0.5021
+EFOS-GTO-002,Definitivo,Positivo_Confirmado,3,0.6,0.0,0.4733
+EFOS-GTO-003,Presunto,Positivo_Presunto,3,0.6,0.0,0.453
+EFOS-GTO-004,Presunto,Positivo_Presunto,4,0.8,0.45,0.2057
+EMP-GTO-005,Desvirtuado,Aclarado_Desvirtuado,1,0.2,0.0,0
+EMP-GTO-006,No_Listado,Unlabeled_No_Identificado,0,0.0,0.0,0

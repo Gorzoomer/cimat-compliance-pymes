@@ -1,0 +1,8 @@
+2026-10-19 21:56:49 | INFO | frente1_homologacion | Iniciando validación y limpieza del dataset: Dataset.csv
+2026-10-19 21:56:49 | INFO | frente1_homologacion | Frente 1 completado. CSV limpio escrito en: dataset_pymes_homologado_limpio.csv
+2026-10-19 21:56:49 | INFO | frente2_sat69b | Dataset prototipo 69-B estructurado escrito en: sat_69b_estructurado_prototipo.csv
+2026-10-19 21:56:49 | INFO | frente3_grafos | Frente 3 completado. Métricas de grafo guardadas en: grafo_metricas_nodos.csv
+2026-10-19 21:56:51 | INFO | frente1_homologacion | Iniciando validación y limpieza del dataset: Dataset.csv
+2026-10-19 21:56:51 | INFO | frente1_homologacion | Frente 1 completado. CSV limpio escrito en: dataset_pymes_homologado_limpio.csv
+2026-10-19 21:56:51 | INFO | frente2_sat69b | Dataset prototipo 69-B estructurado escrito en: sat_69b_estructurado_prototipo.csv
+2026-10-19 21:56:52 | INFO | frente3_grafos | Frente 3 completado. Métricas de grafo guardadas en: grafo_metricas_nodos.csv

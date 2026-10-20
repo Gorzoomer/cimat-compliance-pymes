@@ -1,0 +1,23 @@
+# Python byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Regla No Negociable: Protección de datos sensibles o crudos no anonimizados
+data/raw/*_identificable*
+data/raw/*_crudo*
+*.key
+*.pem
+*.pub
+
+# Archivos temporales de Office y sistema
+~$*
+.DS_Store
+Thumbs.db

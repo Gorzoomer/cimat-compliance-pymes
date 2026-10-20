@@ -1,0 +1,68 @@
+{
+  "grafo_bipartito": {
+    "total_nodos": 22,
+    "total_aristas": 24
+  },
+  "grafo_proyectado_empresas": {
+    "total_empresas": 6,
+    "total_conexiones_societarias": 7,
+    "componentes_conexas": 2,
+    "tamano_mayor_componente": 5
+  },
+  "nodos_metricas": [
+    {
+      "id_empresa": "EFOS-GTO-001",
+      "estatus_69b": "Definitivo",
+      "clase_pu": "Positivo_Confirmado",
+      "grado_empresas_conectadas": 3,
+      "centralidad_grado": 0.6,
+      "centralidad_intermediacion": 0.0,
+      "coeficiente_agrupamiento": 0.5021
+    },
+    {
+      "id_empresa": "EFOS-GTO-002",
+      "estatus_69b": "Definitivo",
+      "clase_pu": "Positivo_Confirmado",
+      "grado_empresas_conectadas": 3,
+      "centralidad_grado": 0.6,
+      "centralidad_intermediacion": 0.0,
+      "coeficiente_agrupamiento": 0.4733
+    },
+    {
+      "id_empresa": "EFOS-GTO-003",
+      "estatus_69b": "Presunto",
+      "clase_pu": "Positivo_Presunto",
+      "grado_empresas_conectadas": 3,
+      "centralidad_grado": 0.6,
+      "centralidad_intermediacion": 0.0,
+      "coeficiente_agrupamiento": 0.453
+    },
+    {
+      "id_empresa": "EFOS-GTO-004",
+      "estatus_69b": "Presunto",
+      "clase_pu": "Positivo_Presunto",
+      "grado_empresas_conectadas": 4,
+      "centralidad_grado": 0.8,
+      "centralidad_intermediacion": 0.45,
+      "coeficiente_agrupamiento": 0.2057
+    },
+    {
+      "id_empresa": "EMP-GTO-005",
+      "estatus_69b": "Desvirtuado",
+      "clase_pu": "Aclarado_Desvirtuado",
+      "grado_empresas_conectadas": 1,
+      "centralidad_grado": 0.2,
+      "centralidad_intermediacion": 0.0,
+      "coeficiente_agrupamiento": 0
+    },
+    {
+      "id_empresa": "EMP-GTO-006",
+      "estatus_69b": "No_Listado",
+      "clase_pu": "Unlabeled_No_Identificado",
+      "grado_empresas_conectadas": 0,
+      "centralidad_grado": 0.0,
+      "centralidad_intermediacion": 0.0,
+      "coeficiente_agrupamiento": 0
+    }
+  ]
+}
